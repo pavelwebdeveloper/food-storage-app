@@ -12,6 +12,8 @@ express()
   .get('/', (req, res) => res.render('pages/index'))
   .get('/', getFoodStorageItems)
   
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  
   function getFoodStorageItems (req, res) {
 	  pool.query('SELECT itemname, amount FROM items', function(err, result) {
       if (err) {
@@ -32,6 +34,6 @@ express()
 	  });
   }
   
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  
   
   
