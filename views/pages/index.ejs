@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <% include ../partials/head %>
+    
 </head>
 <body class="container">
 
 <header>
-    <% include ../partials/header %>
+    
 </header>
 
 <main id="change">
@@ -18,20 +18,7 @@
 		
 		<h2>Here are our hot dogs !</h2>
 
-<ol>
-    <% hotdogs.forEach(function(hotdog) { %>
-	<section>
-		<li class="hotdog"><div><img src="<%= hotdog.image %>"></div>
-		<div>
-		<ul>
-        <li><b>Name:</b> <span class="name"><%= hotdog.hotdogname %></span></li>
-		<li><b>Price:</b> <span class="price"><%= hotdog.price %> $</span></li>
-		<li><b>Description:</b> <%= hotdog.description %></li>
-		</ul>
-		</div></li>
-	</section>
-    <% }); %>
-</ol>
+
 
 
 
@@ -41,133 +28,10 @@
 </main>
 
 <footer>
-    <% include ../partials/footer %>
+    
 </footer>
 
-<script>
-/*
-function addHotdog() {
-  var xhttp = new XMLHttpRequest();
-  var hotdogname = document.getElementById("hotDogName").value;
-  var hotdogprice = document.getElementById("hotDogPrice").value;
-  var hotdogdescription = document.getElementById("hotDogDescription").value;
-	var myobj = { "hotdogname":hotdogname,"hotdogdescription":hotdogdescription,"hotdogprice":hotdogprice };
-var jsonstring = JSON.stringify( myobj );
-var postjson = "jsonstring="+encodeURIComponent( jsonstring );
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-	manageHotDogs();
-      document.getElementById("change").innerHTML = this.responseText;
-	  
-    }
-  };
-  xhttp.open("POST", "/addhotdog", true);
-  xhttp.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
-  xhttp.send(postjson);
-}
-*/
 
-function addHotdog() {
-  var xhttp = new XMLHttpRequest();
-  console.log("Hi I am new AJAX !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-  var hotdogname = document.getElementById("hotDogName").value;
-  var hotdogprice = document.getElementById("hotDogPrice").value;
-  var hotdogdescription = document.getElementById("hotDogDescription").value;
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("change").innerHTML = this.responseText;
-	  
-    }
-  };
-  xhttp.open("POST", "/addhotdog?hotdogname=" + hotdogname + "&hotdogprice=" + hotdogprice + "&hotdogdescription=" + hotdogdescription, true);
-  xhttp.send();
-}
-
-function manageHotDogs() {
-console.log("Hi I am getting the manage hot dogs page");
-var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-	console.log(this.responseText);
-      document.getElementById("change").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "/getmanagehotdogspage", true);
-  xhttp.send();
-}
-
-function deleteHotdog(id, name){
-console.log("Hi I am deleting this hot dog");
-var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-	console.log(this.responseText);
-	reloadList();
-      document.getElementById("change").innerHTML = this.responseText;
-	  
-    }
-  };
-  xhttp.open("DELETE", "/deletehotdog?id=" + id + "&name=" + name, true);
-  xhttp.send();
-}
-
-function reloadList(){
-console.log("getLogNav is working     !!!!!!!!!!!!!!!!!!!!!!!!!!!!          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("change").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "/getmanagehotdogspage", true);
-  xhttp.send();
-}
-
-function getUpdateHotdogPage(id){
-console.log("Hi I am getting the update hot dog page");
-var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-	console.log(this.responseText);
-      document.getElementById("change").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "/getupdatehotdogpage?id=" + id, true);
-  xhttp.send();
-}
-
-function updateHotdog(){
-var xhttp = new XMLHttpRequest();
-var id = document.getElementById("hotDogId").value;
-  var hotdogname = document.getElementById("hotDogName").value;
-  var hotdogprice = document.getElementById("hotDogPrice").value;
-  var hotdogdescription = document.getElementById("hotDogDescription").value;
-  var myobj = { "id":id,"hotdogname":hotdogname,"hotdogprice":hotdogprice,"hotdogdescription":hotdogdescription};
-var jsonstring = JSON.stringify( myobj );
-var postjson = "jsonstring="+encodeURIComponent( jsonstring );
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("change").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("PUT", "/updatehotdog", true);
-  xhttp.setRequestHeader("Content-type", 'application/x-www-form-urlencoded');
-  xhttp.send(postjson);
-}
-
-function getAddHotDogPage(){
-console.log("Hi I am getting the add hot dogs page");
-var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-	console.log(this.responseText);
-      document.getElementById("change").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "/getaddhotdogspage", true);
-  xhttp.send();
-}
-</script>
 <script src="index.js"></script>
 
 </body>
