@@ -23,7 +23,7 @@ app
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with result:");
 	console.log(result.rows);
-	const hotdogs = result.rows;
+	const items = result.rows;
 	console.log("items variable:");
 	console.log(items);
 	
