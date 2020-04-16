@@ -10,7 +10,7 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
-  .get('/getfoodstorageitems', getFoodStorageItems)
+  .get('/', getFoodStorageItems)
   
   function getFoodStorageItems (req, res) {
 	  pool.query('SELECT itemname, amount FROM items', function(err, result) {
