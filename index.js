@@ -10,9 +10,27 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
-  //.get('/getDatabaseURL', getDatabaseURL)
+  .get('/getfoodstorageitems', getFoodStorageItems)
   
-  
+  function getFoodStorageItems (req, res) {
+	  pool.query('SELECT itemname, amount FROM items', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with result:");
+	console.log(result.rows);
+	const hotdogs = result.rows;
+	console.log("items variable:");
+	console.log(items);
+	
+	res.render('pages/index', {
+        items: items
+    });
+	
+	//callback(null, result.rows);
+	  });
+  }
   
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
   

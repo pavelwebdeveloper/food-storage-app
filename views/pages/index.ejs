@@ -13,12 +13,24 @@
 
 <main id="change">
     <div class="jumbotron">
-        <h1>Hot dogs are awesome</h1>
-        <p>Welcome to our hot dogs' management app !</p>
+        <h1>Prepare food storage</h1>
+        <p>Welcome to our food storage app !</p>
 		
-		<h2>Here are our hot dogs !</h2>
+		<h2>You will soon see more !</h2>
 
-
+			<ol>
+				<% items.forEach(function(item) { %>
+				<section>
+					<li class="hotdog">
+					<div>
+					<ul>
+					<li><b>Item:</b> <span class="name"><%= item.itemname %></span></li>
+					<li><b>Amount:</b> <span class="price"><%= item.amount %> $</span></li>
+					</ul>
+					</div></li>
+				</section>
+				<% }); %>
+			</ol>
 
 
 
@@ -32,7 +44,20 @@
 </footer>
 
 <script>
-
+/*
+function manageHotDogs() {
+console.log("Hi I am getting the manage hot dogs page");
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+	console.log(this.responseText);
+      document.getElementById("change").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/getfoodstorageitems", true);
+  xhttp.send();
+}
+*/
 </script>
 <script src="index.js"></script>
 
