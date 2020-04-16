@@ -10,6 +10,12 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
+  .get('/getDatabaseURL', getDatabaseURL)
+  
+  function getDatabaseURL(req, res) {
+	  const databaseURL = DATABASE_URL;
+  }
+  
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
   
   
