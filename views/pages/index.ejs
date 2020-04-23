@@ -6,36 +6,52 @@
 <head>
     <% include ../partials/head %>
 </head>
-<body class="container">
+<body class="container" id="change">
 
 <header>
     <% include ../partials/header.ejs %>
 </header>
 
-<main id="change">
-    <div class="jumbotron">
-		<h1><b>Hello World from Food Storage App !</b></h1>
+<main>
+    <div>
+		<h1 class="text-center"><b>Hello World from Food Storage App !</b></h1>
 		<br>
-        <h1>Food storage is a very good thing to have</h1>
+        <h1 class="text-center">Food storage is a very good thing to have</h1>
 		<br>
-        <p>Welcome to our food storage app !</p>
 		
-		<h2>You will soon see more !</h2>
-
-			<!--<ol>
+		<h2 class="text-center">You will soon see even more !</h2>
+		
+		<h2 class="text-center">These are the food items that we have in our storage for now</h2>
+			<div class="table-responsive">
+			<table class="table table-striped table-bordered table-hover table-condensed">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Item</th>
+					<th>Amount (kg/liters)</th>
+				</tr>
+				</thead>
+				<tbody>
 				<% items.forEach(function(item) { %>
+				<tr>
+	<td><%= item.id %></td>
+    <td><%= item.itemname %></td>
+    <td><%= item.amount %></td>
+  </tr>
+  <!--
 				<section>
 					<li class="hotdog">
 					<div>
 					<ul>
-					<li><b>Item:</b> <span class="name"><%= item.itemname %></span></li>
-					<li><b>Amount:</b> <span class="price"><%= item.amount %> <b>kg</b></span></li>
+					<li><b>Item:</b> <span class="name"></span></li>
+					<li><b>Amount:</b> <span class="price"> <b>kg</b></span></li>
 					</ul>
 					</div></li>
-				</section>
+				</section>-->
 				<% }); %>
-			</ol>-->
-
+				</tbody>
+			</table>
+		</div>
 
 
     </div>
@@ -49,8 +65,8 @@
 
 <script>
 /*
-function manageHotDogs() {
-console.log("Hi I am getting the manage hot dogs page");
+function getNodeJsPage() {
+console.log("Hi I am getting the NodeJs page");
 var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -58,7 +74,7 @@ var xhttp = new XMLHttpRequest();
       document.getElementById("change").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "/getfoodstorageitems", true);
+  xhttp.open("GET", "/getnodejspage", true);
   xhttp.send();
 }
 */

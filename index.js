@@ -16,24 +16,38 @@ app
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
   
   function getFoodStorageItems (req, res) {
+	  
 	  pool.query('SELECT itemname, amount FROM items', function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
-	  // Log this to the console for debugging purposes.
-    console.log("Back from DB with result:");
-	console.log(result.rows);
-	const items = result.rows;
+		  // Log this to the console for debugging purposes.
+		console.log("Back from DB with result:");
+		console.log(result.rows);
+		//const items = result.rows;
+		const items = [{itemname:'fish',amount:150},{itemname:'cheese',amount:30}]
+		console.log("items variable:");
+		console.log(items);
+	
+		res.render('pages/index', {
+			items: items
+		});
+	
+	  });
+	  
+	  
+	  /* This code is merely for testing purposes to test the app locally*/
+	  /*
+	  const items = [{id:1,itemname:'fish',amount:150},{id:2,itemname:'cheese',amount:30}]
 	console.log("items variable:");
 	console.log(items);
 	
 	res.render('pages/index', {
         items: items
     });
-	
-	//callback(null, result.rows);
-	  });
+	*/
   }
+  
   
   
   
