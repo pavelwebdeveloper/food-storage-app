@@ -24,8 +24,7 @@ app
 		  // Log this to the console for debugging purposes.
 		console.log("Back from DB with result:");
 		console.log(result.rows);
-		//const items = result.rows;
-		const items = [{itemname:'fish',amount:150},{itemname:'cheese',amount:30}]
+		const items = result.rows;
 		console.log("items variable:");
 		console.log(items);
 	
