@@ -17,7 +17,7 @@ app
   
   function getFoodStorageItems (req, res) {
 	  
-	  pool.query('SELECT itemname, amount FROM items', function(err, result) {
+	  pool.query('SELECT * FROM items', function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
