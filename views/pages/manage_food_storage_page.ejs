@@ -1,0 +1,35 @@
+
+		
+		
+		<div id="change">
+		<p class="message"><%= infomessage %></p>
+		
+		<button id="addfoodstorageitem" onclick="getAddHotDogPage()">Add a food storage item</button>
+
+<h2 class="text-center">These are the food items that we have in our storage for now</h2>
+			<div class="table-responsive">
+			<table class="table table-striped table-bordered table-hover table-condensed">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Item</th>
+					<th>Amount (kg/liters)</th>
+					<th>Update</th>
+					<th>Delete</th>
+				</tr>
+				</thead>
+				<tbody>
+				<% items.forEach(function(item) { %>
+				<tr>
+	<td><%= item.id %></td>
+    <td><%= item.itemname %></td>
+    <td><%= item.amount %></td>
+	<td><input type="number"id="quantity" name="quantity" min="-10000" max="10000"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><button type="button" onclick="getUpdateHotdogPage(<%= item.id %>)">Update</button></td>
+		<td><button type="button" onclick="deleteHotdog(<%= item.id %>, <%= item.name %>)">Delete this item</button></td>
+  </tr>
+  <% }); %>
+				</tbody>
+			</table>
+		</div>
+		</div>
+

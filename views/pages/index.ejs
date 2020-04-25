@@ -6,17 +6,19 @@
 <head>
     <% include ../partials/head %>
 </head>
-<body class="container" id="change">
+<body class="container">
 
 <header>
     <% include ../partials/header.ejs %>
 </header>
 
 <main>
-    <div>
+    <div id="change">
 		<h1 class="text-center"><b>Hello World from Food Storage App !</b></h1>
 		<br>
         <h1 class="text-center">Food storage is a very good thing to have</h1>
+		<br>
+		<h2 class="text-center">This app will help you know how to accumulate your food storage gradually step by step</h2>
 		<br>
 		
 		<h2 class="text-center">You will soon see even more !</h2>
@@ -38,16 +40,7 @@
     <td><%= item.itemname %></td>
     <td><%= item.amount %></td>
   </tr>
-  <!--
-				<section>
-					<li class="hotdog">
-					<div>
-					<ul>
-					<li><b>Item:</b> <span class="name"></span></li>
-					<li><b>Amount:</b> <span class="price"> <b>kg</b></span></li>
-					</ul>
-					</div></li>
-				</section>-->
+  
 				<% }); %>
 				</tbody>
 			</table>
@@ -64,9 +57,10 @@
 </footer>
 
 <script>
-/*
-function getNodeJsPage() {
-console.log("Hi I am getting the NodeJs page");
+
+
+function manageFoodStorage() {
+console.log("Hi I am getting the manage food storage page");
 var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -74,10 +68,23 @@ var xhttp = new XMLHttpRequest();
       document.getElementById("change").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "/getnodejspage", true);
+  xhttp.open("GET", "/getmanagefoodstoragepage", true);
   xhttp.send();
 }
-*/
+
+function getHomePage() {
+console.log("Hi I am getting the manage food storage page");
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+	console.log(this.responseText);
+      document.getElementById("change").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/gethomepage", true);
+  xhttp.send();
+}
+
 </script>
 <script src="index.js"></script>
 

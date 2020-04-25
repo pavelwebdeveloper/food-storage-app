@@ -1,6 +1,6 @@
 <!-- views/partials/header.ejs -->
 
-<nav class="navbar navbar-default" role="navigation">
+<!--<nav class="navbar navbar-default" role="navigation">
 <div class="container-fluid">
 
     <div class="navbar-header">
@@ -12,5 +12,23 @@
         
     </div>
 
+</div>-->
+
+<div class="container">
+  <h2><span class="glyphicon glyphicon-apple"></span> Food Storage App</h2>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home" onclick="getHomePage()">Home</a></li>
+    <li><a data-toggle="tab" href="#menu1" onclick="manageFoodStorage()">Manage Food Storage</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>HOME</h3>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Manage Food Storage</h3>
+      <p>Here you can add or update the food storage items</p>
+    </div>
+  </div>
 </div>
 </nav>
