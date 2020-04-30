@@ -140,7 +140,7 @@ function getHomePage(req, res){
 
 function addItem(req, res) {
 		var infomessage = "";
-		var nextItemNumber = 0;
+		//var nextItemNumber = 0;
 	console.log("Add Item Info:");
 	console.log(req.query.itemname);
 	console.log(req.query.itemamount);
@@ -151,7 +151,7 @@ function addItem(req, res) {
     });	
 	} else {
 		// This runs the query to get the items number
-		
+	/*	
   pool.query('SELECT COUNT(id) FROM items', function(err, result) {
       if (err) {
         return console.error('error running query', err);
@@ -164,11 +164,12 @@ function addItem(req, res) {
 	console.log("items number");
 	console.log(nextItemNumber);
     });
+	*/
 		
 
 		
 		// This runs the query to add an item
-  pool.query('INSERT INTO items (id, itemname, amount) VALUES ($1, $2, $3)', [nextItemNumber, req.query.itemname, req.query.itemamount], function(err, result) {
+  pool.query('INSERT INTO items (itemname, amount) VALUES ($1, $2, $3)', [req.query.itemname, req.query.itemamount], function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
@@ -178,6 +179,20 @@ function addItem(req, res) {
     console.log("Back from DB with result of adding an item:");
 	console.log(result);
 	console.log(result.rowCount);
+	
+	
+	pool.query('ALTER SEQUENCE items_id_seq RESTART WITH 1', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with the number of items in the items table");
+	console.log(result.rows);
+	var resultOfGachingSequence = result.rows;
+	console.log("result of changing sequence");
+	console.log(resultOfGachingSequence);
+    });
 	
 	
 	// This runs the query to get the items
