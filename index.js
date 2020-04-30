@@ -180,7 +180,7 @@ function addItem(req, res) {
 	console.log(result);
 	console.log(result.rowCount);
 	
-	
+	/*
 	pool.query('ALTER SEQUENCE items_id_seq RESTART WITH 1', function(err, result) {
       if (err) {
         return console.error('error running query', err);
@@ -193,6 +193,7 @@ function addItem(req, res) {
 	console.log("result of changing sequence");
 	console.log(resultOfGachingSequence);
     });
+	*/
 	
 	
 	// This runs the query to get the items
