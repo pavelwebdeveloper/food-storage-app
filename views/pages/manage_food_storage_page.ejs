@@ -12,14 +12,14 @@
 		 <button class="submitBtn" onclick="addItem()">Add a food storage item</button>
 		 
 		 <script>
-		 if(successmessage){
+		 if(<%= successmessage %>){
 			<div class="container">
 			<div class="alert alert-success>
 			 <strong><%= successmessage %></strong>
 			 </div>
 			 </div>
 			 }
-		if(successmessage){
+		if(<%= warnmessage %>){
 			 <div class="container">
 			 <div class="alert alert-warning">
 		  	 <strong><%= warnmessage %><strong>
