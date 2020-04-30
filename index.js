@@ -149,10 +149,25 @@ function addItem(req, res) {
         infomessage: infomessage
     });	
 	} else {
-		//var id = Math.floor(Math.random() * 10);
+		// This runs the query to get the items number
+		
+  pool.query('SELECT COUNT(id) FROM items', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with the number of items in the items table");
+	console.log(result.rows);
+	const nextItemNumber = result.rows;
+	console.log("items number");
+	console.log(nextItemNumber);
+    });
+		
+
 		
 		// This runs the query to add an item
-  pool.query('INSERT INTO items (itemname, amount) VALUES ($1, $2)', [req.query.itemname, req.query.itemamount], function(err, result) {
+  pool.query('INSERT INTO items (id, itemname, amount) VALUES ($1, $2, $3)', [nextItemNumber, req.query.itemname, req.query.itemamount], function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
@@ -162,23 +177,6 @@ function addItem(req, res) {
     console.log("Back from DB with result of adding an item:");
 	console.log(result);
 	console.log(result.rowCount);
-	
-		// This runs the query to get the items number
-  pool.query('SELECT COUNT(id) FROM items', function(err, result) {
-      if (err) {
-        return console.error('error running query', err);
-      }
-	  
-	  // Log this to the console for debugging purposes.
-    console.log("Back from DB with the number of items in the items table");
-	console.log(result.rows);
-	const itemsNumber = result.rows;
-	console.log("items number");
-	console.log(itemsNumber);
-    });
-	
-	
-	
 	
 	
 	// This runs the query to get the items
