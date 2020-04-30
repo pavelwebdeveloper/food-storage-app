@@ -169,7 +169,7 @@ function addItem(req, res) {
 
 		
 		// This runs the query to add an item
-  pool.query('INSERT INTO items (itemname, amount) VALUES ($1, $2, $3)', [req.query.itemname, req.query.itemamount], function(err, result) {
+  pool.query('INSERT INTO items (itemname, amount) VALUES ($1, $2)', [req.query.itemname, req.query.itemamount], function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
