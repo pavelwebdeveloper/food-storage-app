@@ -140,7 +140,7 @@ function getHomePage(req, res){
 
 function addItem(req, res) {
 		var infomessage = "";
-		const nextItemNumber = 0;
+		var nextItemNumber = 0;
 	console.log("Add Item Info:");
 	console.log(req.query.itemname);
 	console.log(req.query.itemamount);
