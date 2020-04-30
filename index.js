@@ -147,7 +147,7 @@ function addItem(req, res) {
 	console.log(req.query.itemname);
 	console.log(req.query.itemamount);
 	if(!req.query.itemname || !req.query.itemamount) {
-	warnmessage = '<div class="alert alert-warning"><strong>Warning!</strong> Please, provide all the required information.</div>';
+	warnmessage = "Please, provide all the required information.";
 		res.render('pages/manage_food_storage_page', {
         warnmessage: warnmessage
     });	
@@ -210,7 +210,7 @@ function addItem(req, res) {
 	const items = result.rows;
 	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	console.log(items);
-	successmessage = '<div class="alert alert-success><strong>Success!</strong> You have successfully added " + req.query.itemname + " !</div>';
+	successmessage = "Success! You have successfully added " + req.query.itemname + " !";
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,

@@ -11,8 +11,22 @@
 		 <input type="number" name="itemAmount" id="itemAmount" size="7" required>
 		 <button class="submitBtn" onclick="addItem()">Add a food storage item</button>
 		 
-			 <%= successmessage %>
-		  	 <%= warnmessage %>
+		 <script>
+		 if(successmessage){
+			<div class="container">
+			<div class="alert alert-success>
+			 <strong><%= successmessage %></strong>
+			 </div>
+			 </div>
+			 }
+		if(successmessage){
+			 <div class="container">
+			 <div class="alert alert-warning">
+		  	 <strong><%= warnmessage %><strong>
+			 </div>
+			 </div>
+			 }
+			 </script>
 		  
 
 <h2 class="text-center">These are the food items that we have in our storage for now</h2>
