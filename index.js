@@ -73,11 +73,13 @@ app
 	const items = result.rows;
 	console.log("items variable:");
 	console.log(items);
-	var infomessage = "";
+	var successmessage = "";
+	var warnmessage = "";
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
-		infomessage: infomessage
+		successmessage: successmessage,
+		warnmessage: warnmessage
 		});
     });
 	
