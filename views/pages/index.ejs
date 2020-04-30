@@ -85,6 +85,21 @@ var xhttp = new XMLHttpRequest();
   xhttp.send();
 }
 
+function addItem() {
+  var xhttp = new XMLHttpRequest();
+  console.log("Hi I am adding an item !!!!!")
+  var itemname = document.getElementById("itemName").value;
+  var itemamount = document.getElementById("itemAmount").value;
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("change").innerHTML = this.responseText;
+	  
+    }
+  };
+  xhttp.open("POST", "/additem?itemname=" + itemname + "&itemamount=" + itemamount, true);
+  xhttp.send();
+}
+
 </script>
 <script src="index.js"></script>
 

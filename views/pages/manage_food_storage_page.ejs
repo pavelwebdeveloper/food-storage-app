@@ -2,9 +2,14 @@
 		
 		
 		<div id="change">
-		<p class="message"><%= infomessage %></p>
 		
-		<button id="addfoodstorageitem" onclick="getAddHotDogPage()">Add a food storage item</button>
+		<p class="warning"><%= infomessage %></p>
+     
+		 <label>Item Name</label>
+		 <input type="text" name="itemName" id="itemName" pattern="[A-za-z\s]{3,}" required>
+		 <label>Item Amount</label>
+		 <input type="number" name="itemAmount" id="itemAmount" size="7" required>
+		 <button class="submitBtn" id="addfoodstorageitem" onclick="addItem()">Add a food storage item</button>
 
 <h2 class="text-center">These are the food items that we have in our storage for now</h2>
 			<div class="table-responsive">
