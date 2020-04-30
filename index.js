@@ -163,6 +163,24 @@ function addItem(req, res) {
 	console.log(result);
 	console.log(result.rowCount);
 	
+		// This runs the query to get the items number
+  pool.query('SELECT COUNT(id) FROM items', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with the number of items in the items table");
+	console.log(result.rows);
+	const itemsNumber = result.rows;
+	console.log("items number");
+	console.log(itemsNumber);
+    });
+	
+	
+	
+	
+	
 	// This runs the query to get the items
   pool.query('SELECT * FROM items', function(err, result) {
       if (err) {
