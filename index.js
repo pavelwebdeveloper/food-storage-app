@@ -145,9 +145,9 @@ function addItem(req, res) {
 	console.log(req.query.itemname);
 	console.log(req.query.itemamount);
 	if(!req.query.itemname || !req.query.itemamount) {
-	infomessage = "Please, provide all the required information.";
+	warnmessage = "<strong>Warning!</strong> Please, provide all the required information.";
 		res.render('pages/manage_food_storage_page', {
-        infomessage: infomessage
+        warnmessage: warnmessage
     });	
 	} else {
 		// This runs the query to get the items number
@@ -208,11 +208,11 @@ function addItem(req, res) {
 	const items = result.rows;
 	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	console.log(items);
-	infomessage = "You have successfully added " + req.query.itemname + " !";
+	successmessage = "<strong>Success!</strong> You have successfully added " + req.query.itemname + " !";
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
-		infomessage: infomessage
+		successmessage: successmessage
     });
 
     }); 
