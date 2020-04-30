@@ -140,6 +140,7 @@ function getHomePage(req, res){
 
 function addItem(req, res) {
 		var infomessage = "";
+		const nextItemNumber = 0;
 	console.log("Add Item Info:");
 	console.log(req.query.itemname);
 	console.log(req.query.itemamount);
@@ -159,7 +160,7 @@ function addItem(req, res) {
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with the number of items in the items table");
 	console.log(result.rows);
-	const nextItemNumber = result.rows;
+	nextItemNumber = result.rows;
 	console.log("items number");
 	console.log(nextItemNumber);
     });
