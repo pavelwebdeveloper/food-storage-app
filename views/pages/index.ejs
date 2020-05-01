@@ -89,12 +89,6 @@ function addItem() {
   console.log("Hi I am adding an item !!!!!")
   var itemname = document.getElementById("itemName").value;
   var itemamount = document.getElementById("itemAmount").value;
-  items.forEach(function(item) {
-	if(item.itemname == itemname){
-	var namealreadyexists = itemname;
-	nameAlreadyExists(namealreadyexists);
-	}
-	});
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("change").innerHTML = this.responseText;
@@ -102,19 +96,6 @@ function addItem() {
     }
   };
   xhttp.open("POST", "/additem?itemname=" + itemname + "&itemamount=" + itemamount, true);
-  xhttp.send();
-}
-
-function nameAlreadyExists(namealreadyexists){
-console.log("Hi I am getting the manage food storage pageagain becaus esuch item already exists");
-var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-	console.log(this.responseText);
-      document.getElementById("change").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "/getmanagefoodstoragepage?namealreadyexists=" + namealreadyexists, true);
   xhttp.send();
 }
 

@@ -79,18 +79,12 @@ app
 	console.log(items);
 	
 	var successmessage;
-	var infomessage;
+	var infomessage = "";
 	
 	if(!req.query.itemname){
 	successmessage = "";
 	} else {
 		successmessage = "Success! You have successfully deleted " + req.query.itemname + " !";
-	}
-	
-	if(!req.query.namealreadyexists){
-	infomessage = "";
-	} else {
-		infomessage = req.query.namealreadyexists + " is already included in the list";
 	}
 	
 	
@@ -182,6 +176,12 @@ function addItem(req, res) {
 	const items = result.rows;
 	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	console.log(items);
+	
+	items.forEach(function(item) {
+		if(items.itemname == req.query.itemname){
+			infomessage = req.query.itemname + " is already included in the list";
+		}
+	});
 	
 	infomessage = "Please, provide all the required information.";
 		res.render('pages/manage_food_storage_page', {
