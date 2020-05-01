@@ -78,12 +78,12 @@ app
 	console.log("items variable:");
 	console.log(items);
 	var successmessage = "";
-	var warnmessage = "";
+	var infomessage = "";
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
 		successmessage: successmessage,
-		warnmessage: warnmessage
+		infomessage: infomessage
 		});
     });
 	
