@@ -106,7 +106,7 @@ var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 	console.log(this.responseText);
-	reloadList();
+	reloadList(name);
       document.getElementById("change").innerHTML = this.responseText;
 	  
     }
@@ -123,7 +123,7 @@ console.log("getLogNav is working     !!!!!!!!!!!!!!!!!!!!!!!!!!!!          !!!!
       document.getElementById("change").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "/getmanagefoodstoragepage", true);
+  xhttp.open("GET", "/getmanagefoodstoragepage?itemname=" + name, true);
   xhttp.send();
 }
 

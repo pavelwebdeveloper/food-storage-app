@@ -60,7 +60,7 @@ app
   
   
   function getManageFoodStoragePage(req, res){
-		
+		 
 	
 	// This runs the query to get the hotdogs
 	console.log("Getting items from DB");
@@ -70,22 +70,30 @@ app
       }
 	  
 	  
-	  
+	 
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with result:");
 	console.log(result.rows);
 	const items = result.rows;
 	console.log("items variable:");
 	console.log(items);
-	var successmessage = "";
+	
+	var successmessage;
 	var infomessage = "";
+	
+	if(!req.query.itemname){
+	successmessage = "";
+	} else {
+		successmessage = "You have successfully deleted " + req.query.itemname;
+	}
+	
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
 		successmessage: successmessage,
 		infomessage: infomessage
 		});
-    });
+    }); 
 	
 	
 /* This code is merely for testing purposes to test the app locally*/
