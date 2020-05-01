@@ -231,6 +231,7 @@ function deleteItem(req, res) {
 	  console.log("Id of Item that is going to be deleted:");
 	  //var itemname = req.query.itemname;
 	  var successmessage = "";
+	  var infomessage = "";
 	console.log(req.query.id);
 	pool.query('DELETE FROM items WHERE id=$1', [req.query.id], function(err, result) {
       if (err) {
