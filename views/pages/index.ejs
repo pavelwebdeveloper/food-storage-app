@@ -100,7 +100,7 @@ function addItem() {
   xhttp.send();
 }
 
-function deleteItem(id, itemname){
+function deleteItem(id, name){
 console.log("Hi I am deleting this item");
 var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -110,7 +110,7 @@ var xhttp = new XMLHttpRequest();
 	  
     }
   };
-  xhttp.open("DELETE", "/deleteitem?id=" + id + "&itemname=" + itemname, true);
+  xhttp.open("DELETE", "/deleteitem?id=" + id + "&itemname=" + name, true);
   xhttp.send();
 }
 
