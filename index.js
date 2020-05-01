@@ -177,12 +177,6 @@ function addItem(req, res) {
 	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	console.log(items);
 	
-	items.forEach(function(item) {
-		if(items.itemname == req.query.itemname){
-			infomessage = req.query.itemname + " is already included in the list";
-		}
-	});
-	
 	infomessage = "Please, provide all the required information.";
 		res.render('pages/manage_food_storage_page', {
         infomessage: infomessage,
@@ -224,6 +218,13 @@ function addItem(req, res) {
 	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	console.log(items);
 	successmessage = "Success! You have successfully added " + req.query.itemname + " !";
+	
+	items.forEach(function(item) {
+		if(items.itemname == req.query.itemname){
+			infomessage = req.query.itemname + " is already included in the list";
+			successmessage = "";
+		}
+	});
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
