@@ -148,14 +148,15 @@ function getHomePage(req, res){
 
 function addItem(req, res) {
 		var infomessage = "";
+		var successmessage = "";
 		//var nextItemNumber = 0;
 	console.log("Add Item Info:");
 	console.log(req.query.itemname);
 	console.log(req.query.itemamount);
 	if(!req.query.itemname || !req.query.itemamount) {
-	warnmessage = "Please, provide all the required information.";
+	infomessage = "Please, provide all the required information.";
 		res.render('pages/manage_food_storage_page', {
-        warnmessage: warnmessage
+        infomessage: infomessage
     });	
 	} else {
 		// This runs the query to get the items number

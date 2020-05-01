@@ -4,3 +4,14 @@ td#td-flex{
 	justify_content: space around;
 }
 
+
+p.success-message{
+	background-color: #00FF7F;
+	color: #008000;
+}
+
+
+p.info-message{
+	background-color: #00BFFF;
+	color: #00008B;
+}
