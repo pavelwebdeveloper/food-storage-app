@@ -16,6 +16,7 @@ app
   .get('/getmanagefoodstoragepage', getManageFoodStoragePage)
   .get('/gethomepage', getHomePage)
   .post('/additem', addItem)
+  .delete('/deleteitem', deleteItem)
   
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
   
@@ -245,6 +246,45 @@ function addItem(req, res) {
 	}
 	*/
 }
+
+
+function deleteItem(req, res) {
+	  console.log("Id of Item that is going to be deleted:");
+	  var name = req.query.itemname;
+	  var successmessage = "";
+	console.log(req.query.id);
+	pool.query('DELETE FROM items WHERE id=$1', [req.query.id], function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with result:");
+	console.log(result);
+	
+	//callback(null, result.rows);
+    });
+	
+	// This runs the query to get the hotdogs
+  pool.query('SELECT * FROM items', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with result:");
+	console.log(result.rows);
+	const items = result.rows;
+	console.log("items variable:");
+	console.log(items);
+	successmessage = "You have successfully deleted " + req.query.itemname;
+	
+	res.render('pages/manage_food_storage_page', {
+        items: items,
+		successmessage: successmessage
+		});
+    });
+  }
   
   
   

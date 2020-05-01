@@ -10,24 +10,7 @@
 		 <label>Item Amount</label>
 		 <input type="number" name="itemAmount" id="itemAmount" size="7" required>
 		 <button class="submitBtn" onclick="addItem()">Add a food storage item</button>
-		 
-		 <script>
-		 if(<%= successmessage %>){
-			<div class="container">
-			<div class="alert alert-success>
-			 <strong><%= successmessage %></strong>
-			 </div>
-			 </div>
-			 }
-		if(<%= warnmessage %>){
-			 <div class="container">
-			 <div class="alert alert-warning">
-		  	 <strong><%= warnmessage %><strong>
-			 </div>
-			 </div>
-			 }
-			 </script>
-		  
+		 <p class="warning"><%= infomessage %></p>
 
 <h2 class="text-center">These are the food items that we have in our storage for now</h2>
 			<div class="table-responsive">
@@ -47,8 +30,8 @@
 	<td><%= item.id %></td>
     <td><%= item.itemname %></td>
     <td><%= item.amount %></td>
-	<td><input type="number"id="quantity" name="quantity" min="-10000" max="10000"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><button type="button" onclick="getUpdateHotdogPage(<%= item.id %>)">Update</button></td>
-		<td><button type="button" onclick="deleteHotdog(<%= item.id %>, <%= item.name %>)">Delete this item</button></td>
+	<td><input type="number"id="quantity" name="quantity" min="-10000" max="10000"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><button type="button" onclick="updateItem(<%= item.id %>)">Update</button></td>
+		<td><button type="button" onclick="deleteItem(<%= item.id %>, <%= item.itemname %>)">Delete this item</button></td>
   </tr>
   <% }); %>
 				</tbody>

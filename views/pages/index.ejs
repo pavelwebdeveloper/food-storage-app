@@ -100,6 +100,20 @@ function addItem() {
   xhttp.send();
 }
 
+function deleteItem(id, itemname){
+console.log("Hi I am deleting this item");
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+	console.log(this.responseText);
+      document.getElementById("change").innerHTML = this.responseText;
+	  
+    }
+  };
+  xhttp.open("DELETE", "/deleteitem?id=" + id + "&name=" + itemname, true);
+  xhttp.send();
+}
+
 </script>
 <script src="index.js"></script>
 
