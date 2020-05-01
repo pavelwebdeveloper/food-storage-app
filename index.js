@@ -199,9 +199,8 @@ function addItem(req, res) {
 	const items = result.rows;
 	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	console.log(items);
-    }); 
-		
-	items.forEach(function(item) {
+	
+		items.forEach(function(item) {
 		if(item.itemname == req.query.itemname){
 			infomessage = req.query.itemname + " is already included in the list";
 			successmessage = "";
@@ -277,6 +276,9 @@ function addItem(req, res) {
 	*/
 		}
 	});
+    }); 
+		
+
 		
 
 	}
