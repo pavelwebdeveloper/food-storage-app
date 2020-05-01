@@ -186,21 +186,7 @@ function addItem(req, res) {
 	} else {
 		// This runs the query to get the items number
 		
-  pool.query('SELECT COUNT(id) FROM items', function(err, result) {
-      if (err) {
-        return console.error('error running query', err);
-      }
-	  
-	  // Log this to the console for debugging purposes.
-    console.log("Back from DB with the number of items in the items table");
-	console.log(result.rows);
-	itemsnumber = result.rows;
-	console.log("items number");
-	console.log(itemsnumber);
-    });
-	
-		
-
+  
 		
 		// This runs the query to add an item
   pool.query('INSERT INTO items (itemname, amount) VALUES ($1, $2)', [req.query.itemname, req.query.itemamount], function(err, result) {
@@ -220,6 +206,19 @@ function addItem(req, res) {
       if (err) {
         return console.error('error running query', err);
       }
+	  
+	  pool.query('SELECT COUNT(id) FROM items', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with the number of items in the items table");
+	console.log(result.rows);
+	itemsnumber = result.rows;
+	console.log("items number");
+	console.log(itemsnumber);
+    });
 	  
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with result !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:");
@@ -283,7 +282,16 @@ function deleteItem(req, res) {
 	//callback(null, result.rows);
     });
 	
-	pool.query('SELECT COUNT(id) FROM items', function(err, result) {
+	
+	
+	
+	// This runs the query to get the hotdogs
+  pool.query('SELECT * FROM items', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  
+	  pool.query('SELECT COUNT(id) FROM items', function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
@@ -295,13 +303,6 @@ function deleteItem(req, res) {
 	console.log("items number");
 	console.log(itemsnumber);
     });
-	
-	
-	// This runs the query to get the hotdogs
-  pool.query('SELECT * FROM items', function(err, result) {
-      if (err) {
-        return console.error('error running query', err);
-      }
 	  
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with result:");
