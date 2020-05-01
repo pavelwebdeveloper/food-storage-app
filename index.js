@@ -153,10 +153,30 @@ function addItem(req, res) {
 	console.log("Add Item Info:");
 	console.log(req.query.itemname);
 	console.log(req.query.itemamount);
+	
+	// This runs the query to get the items
+  pool.query('SELECT * FROM items', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }	  
+	  	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with result !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:");
+	console.log(result.rows);
+	const items = result.rows;
+	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+	console.log(items);
+    }); 
+	
+	
+	
+	
 	if(!req.query.itemname || !req.query.itemamount) {
 	infomessage = "Please, provide all the required information.";
 		res.render('pages/manage_food_storage_page', {
-        infomessage: infomessage
+        infomessage: infomessage,
+		successmessage: successmessage,
+		items: items
     });	
 	} else {
 		// This runs the query to get the items number
