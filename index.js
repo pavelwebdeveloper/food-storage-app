@@ -265,7 +265,7 @@ function deleteItem(req, res) {
 	//callback(null, result.rows);
     });
 	
-	pool.query('ALTER SEQUENCE items RESTART;', function(err, result) {
+	pool.query('ALTER SEQUENCE items RESTART WITH 1;', function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
