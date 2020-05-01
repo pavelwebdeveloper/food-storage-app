@@ -265,6 +265,19 @@ function deleteItem(req, res) {
 	//callback(null, result.rows);
     });
 	
+	pool.query('ALTER SEQUENCE items_id_seq RESTART WITH 1', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with the number of items in the items table");
+	console.log(result.rows);
+	var resultOfGachingSequence = result.rows;
+	console.log("result of changing sequence");
+	console.log(resultOfGachingSequence);
+    });
+	
 	// This runs the query to get the hotdogs
   pool.query('SELECT * FROM items', function(err, result) {
       if (err) {
