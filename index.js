@@ -104,22 +104,9 @@ app
 
 
 function getHomePage(req, res){
-	var itemsnumber = 0;
 	console.log("Getting items from DB");
 	
-	pool.query('SELECT COUNT(id) FROM items', function(err, result) {
-      if (err) {
-        return console.error('error running query', err);
-      }
-	  
-	  // Log this to the console for debugging purposes.
-    console.log("Back from DB with the number of items in the items table");
-	console.log(result.rows);
-	itemsnumber = result.rows[0].count;
-	console.log("items number");
-	console.log(itemsnumber);
-    });
-	
+		
 	// This runs the query to get the hotdogs
 	
   pool.query('SELECT * FROM items', function(err, result) {
@@ -138,8 +125,7 @@ function getHomePage(req, res){
 	
 	res.render('pages/home_page', {
         items: items,
-		infomessage: infomessage,
-		itemsnumber: itemsnumber
+		infomessage: infomessage
 		});
     });
 	
@@ -162,7 +148,6 @@ function getHomePage(req, res){
 
 function addItem(req, res) {
 		var infomessage = "";
-		var itemsnumber = 0;
 		//var nextItemNumber = 0;
 	console.log("Add Item Info:");
 	console.log(req.query.itemname);
@@ -196,20 +181,7 @@ function addItem(req, res) {
         return console.error('error running query', err);
       }
 	  
-	  pool.query('SELECT COUNT(id) FROM items', function(err, result) {
-      if (err) {
-        return console.error('error running query', err);
-      }
-	  
-	  // Log this to the console for debugging purposes.
-    console.log("Back from DB with the number of items in the items table");
-	console.log(result.rows);
-	itemsnumber = result.rows[0].count;
-	console.log("items number");
-	console.log(itemsnumber);
-    });
-	 
-	  
+	  	  
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with result !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:");
 	console.log(result.rows);
@@ -220,8 +192,7 @@ function addItem(req, res) {
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
-		successmessage: successmessage,
-		itemsnumber: itemsnumber
+		successmessage: successmessage
     });
 
     }); 
@@ -255,7 +226,6 @@ function addItem(req, res) {
 
 
 function deleteItem(req, res) {
-	var itemsnumber = 0;
 	  console.log("Id of Item that is going to be deleted:");
 	  //var itemname = req.query.itemname;
 	  var successmessage = "";
@@ -278,20 +248,7 @@ function deleteItem(req, res) {
       if (err) {
         return console.error('error running query', err);
       }
-	  
-	pool.query('SELECT COUNT(id) FROM items', function(err, result) {
-      if (err) {
-        return console.error('error running query', err);
-      }
-	  
-	  // Log this to the console for debugging purposes.
-    console.log("Back from DB with the number of items in the items table");
-	console.log(result.rows);
-	itemsnumber = result.rows[0].count;
-	console.log("items number");
-	console.log(itemsnumber);
-    });
-	  
+	  	  
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with result:");
 	console.log(result.rows);
@@ -302,8 +259,7 @@ function deleteItem(req, res) {
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
-		successmessage: successmessage,
-		itemsnumber: itemsnumber
+		successmessage: successmessage
 		});
     });
   }
