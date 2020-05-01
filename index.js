@@ -35,7 +35,7 @@ app
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with the number of items in the items table");
 	console.log(result.rows);
-	itemsnumber = result.rows;
+	itemsnumber = result.rows.count;
 	console.log("items number");
 	console.log(itemsnumber);
     });
