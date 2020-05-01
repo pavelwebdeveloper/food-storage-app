@@ -5,13 +5,15 @@ td#td-flex{
 }
 
 
-p.success-message{
+div.success-message{
 	background-color: #00FF7F;
 	color: #008000;
+	font-size: 35px;
 }
 
 
-p.info-message{
+div.info-message{
 	background-color: #00BFFF;
 	color: #00008B;
+	font-size: 35px;
 }
