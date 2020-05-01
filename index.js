@@ -153,12 +153,7 @@ function addItem(req, res) {
 	console.log("Add Item Info:");
 	console.log(req.query.itemname);
 	console.log(req.query.itemamount);
-	
-	
-	
-	
-	
-	
+		
 	if(!req.query.itemname || !req.query.itemamount) {
 		
 		// This runs the query to get the items
@@ -173,14 +168,16 @@ function addItem(req, res) {
 	const items = result.rows;
 	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	console.log(items);
-    }); 
 	
 	infomessage = "Please, provide all the required information.";
 		res.render('pages/manage_food_storage_page', {
         infomessage: infomessage,
 		successmessage: successmessage,
 		items: items
-    });	
+    });
+    }); 
+	
+		
 	} else {
 		// This runs the query to get the items number
 		
