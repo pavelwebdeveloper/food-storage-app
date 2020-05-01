@@ -199,7 +199,8 @@ function addItem(req, res) {
 	const items = result.rows;
 	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	console.log(items);
-	
+    }); 
+		
 	items.forEach(function(item) {
 		if(item.itemname == req.query.itemname){
 			infomessage = req.query.itemname + " is already included in the list";
@@ -210,7 +211,6 @@ function addItem(req, res) {
 		successmessage: successmessage,
 		infomessage: infomessage
     });
-	break;
 		} else {
 					// This runs the query to add an item
   pool.query('INSERT INTO items (itemname, amount) VALUES ($1, $2)', [req.query.itemname, req.query.itemamount], function(err, result) {
@@ -277,9 +277,6 @@ function addItem(req, res) {
 	*/
 		}
 	});
-    }); 
-		
-	
 		
 
 	}
