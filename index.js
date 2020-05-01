@@ -157,7 +157,6 @@ function getHomePage(req, res){
 function addItem(req, res) {
 		var infomessage = "";
 		var successmessage = "";
-		var items;
 		//var nextItemNumber = 0;
 	console.log("Add Item Info:");
 	console.log(req.query.itemname);
@@ -172,7 +171,7 @@ function addItem(req, res) {
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with result !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:");
 	console.log(result.rows);
-	items = result.rows;
+	const items = result.rows;
 	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	console.log(items);
     }); 
