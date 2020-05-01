@@ -60,8 +60,7 @@ app
   
   
   function getManageFoodStoragePage(req, res){
-		var successmessage = "";
-	var infomessage = "";
+		
 	
 	// This runs the query to get the hotdogs
 	console.log("Getting items from DB");
@@ -78,8 +77,8 @@ app
 	const items = result.rows;
 	console.log("items variable:");
 	console.log(items);
-	successmessage = req.query.successmessage;
-	infomessage = req.query.infomessage;
+	var successmessage = "";
+	var infomessage = "";
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
