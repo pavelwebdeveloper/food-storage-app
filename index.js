@@ -84,7 +84,7 @@ app
 	if(!req.query.itemname){
 	successmessage = "";
 	} else {
-		successmessage = "You have successfully deleted " + req.query.itemname;
+		successmessage = "Success! You have successfully deleted " + req.query.itemname + " !";
 	}
 	
 	
