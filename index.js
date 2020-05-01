@@ -157,15 +157,14 @@ function getHomePage(req, res){
 function addItem(req, res) {
 		var infomessage = "";
 		var successmessage = "";
+		const items;
 		//var nextItemNumber = 0;
 	console.log("Add Item Info:");
 	console.log(req.query.itemname);
 	console.log(req.query.itemamount);
-		
-	if(!req.query.itemname || !req.query.itemamount) {
-		
-		// This runs the query to get the items
-  pool.query('SELECT * FROM items', function(err, result) {
+	
+	
+	pool.query('SELECT * FROM items', function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }	  
@@ -173,9 +172,13 @@ function addItem(req, res) {
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with result !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:");
 	console.log(result.rows);
-	const items = result.rows;
+	items = result.rows;
 	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	console.log(items);
+    }); 
+	
+		
+	if(!req.query.itemname || !req.query.itemamount) {
 	
 	infomessage = "Please, provide all the required information.";
 		res.render('pages/manage_food_storage_page', {
@@ -183,10 +186,12 @@ function addItem(req, res) {
 		successmessage: successmessage,
 		items: items
     });
-    }); 
+     
 	
 		
 	} else {
+	
+		
 		// This runs the query to get the items number
 		
 	items.forEach(function(item) {
