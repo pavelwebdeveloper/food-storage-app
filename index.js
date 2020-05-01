@@ -272,7 +272,7 @@ function deleteItem(req, res) {
       }
     });
 	
-	pool.query('UPDATE items SET id = DEFAULT;', function(err, result) {
+	pool.query('UPDATE items SET id = 1;', function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
