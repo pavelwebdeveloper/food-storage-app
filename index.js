@@ -265,6 +265,12 @@ function deleteItem(req, res) {
 	//callback(null, result.rows);
     });
 	
+	pool.query('UPDATE items SET id = DEFAULT;', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+    });
+	
 	pool.query('ALTER SEQUENCE items RESTART WITH 1;', function(err, result) {
       if (err) {
         return console.error('error running query', err);
