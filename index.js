@@ -40,7 +40,7 @@ app
 	console.log(itemsnumber);
     });
 	  
-	  pool.query('SELECT * FROM items', function(err, result) {
+	  pool.query('SELECT *, COUNT(id) FROM items', function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
@@ -91,7 +91,7 @@ app
 	
 	// This runs the query to get the hotdogs
 	console.log("Getting items from DB");
-  pool.query('SELECT * FROM items', function(err, result) {
+  pool.query('SELECT *, COUNT(id) FROM items', function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
@@ -150,7 +150,7 @@ function getHomePage(req, res){
 	
 	// This runs the query to get the hotdogs
 	
-  pool.query('SELECT * FROM items', function(err, result) {
+  pool.query('SELECT *, COUNT(id) FROM items', function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
@@ -219,7 +219,7 @@ function addItem(req, res) {
 	
 	
 	// This runs the query to get the items
-  pool.query('SELECT * FROM items', function(err, result) {
+  pool.query('SELECT *, COUNT(id) FROM items', function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
@@ -302,7 +302,7 @@ function deleteItem(req, res) {
 	
 	
 	// This runs the query to get the hotdogs
-  pool.query('SELECT * FROM items', function(err, result) {
+  pool.query('SELECT *, COUNT(id) FROM items', function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
