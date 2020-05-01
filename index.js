@@ -189,9 +189,18 @@ function addItem(req, res) {
 	} else {
 		// This runs the query to get the items number
 		
-
-		
-		// This runs the query to add an item
+	items.forEach(function(item) {
+		if(item.itemname == req.query.itemname){
+			infomessage = req.query.itemname + " is already included in the list";
+			successmessage = "";
+			
+			res.render('pages/manage_food_storage_page', {
+        items: items,
+		successmessage: successmessage,
+		infomessage: infomessage
+    });
+		} else {
+					// This runs the query to add an item
   pool.query('INSERT INTO items (itemname, amount) VALUES ($1, $2)', [req.query.itemname, req.query.itemamount], function(err, result) {
       if (err) {
         return console.error('error running query', err);
@@ -219,12 +228,7 @@ function addItem(req, res) {
 	console.log(items);
 	successmessage = "Success! You have successfully added " + req.query.itemname + " !";
 	
-	items.forEach(function(item) {
-		if(item.itemname == req.query.itemname){
-			infomessage = req.query.itemname + " is already included in the list";
-			successmessage = "";
-		}
-	});
+	
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
@@ -234,7 +238,7 @@ function addItem(req, res) {
 
     }); 
     });
-	}
+	
 	/* This code is merely for testing purposes to test the app locally*/
 	/*
 	{
@@ -259,6 +263,12 @@ function addItem(req, res) {
     });		
 	}
 	*/
+		}
+	});
+		
+
+	}
+	
 }
 
 
