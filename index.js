@@ -220,7 +220,7 @@ function addItem(req, res) {
 	successmessage = "Success! You have successfully added " + req.query.itemname + " !";
 	
 	items.forEach(function(item) {
-		if(items.itemname == req.query.itemname){
+		if(item.itemname == req.query.itemname){
 			infomessage = req.query.itemname + " is already included in the list";
 			successmessage = "";
 		}
