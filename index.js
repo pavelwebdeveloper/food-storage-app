@@ -79,12 +79,18 @@ app
 	console.log(items);
 	
 	var successmessage;
-	var infomessage = "";
+	var infomessage;
 	
 	if(!req.query.itemname){
 	successmessage = "";
 	} else {
 		successmessage = "Success! You have successfully deleted " + req.query.itemname + " !";
+	}
+	
+	if(!req.query.namealreadyexists){
+	infomessage = "";
+	} else {
+		infomessage = req.query.namealreadyexists + " is already included in the list";
 	}
 	
 	
