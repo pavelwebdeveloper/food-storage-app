@@ -106,6 +106,7 @@ var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 	console.log(this.responseText);
+	reloadList();
       document.getElementById("change").innerHTML = this.responseText;
 	  
     }
@@ -113,7 +114,7 @@ var xhttp = new XMLHttpRequest();
   xhttp.open("DELETE", "/deleteitem?id=" + id + "&itemname=" + name, true);
   xhttp.send();
 }
-/*
+
 function reloadList(){
 console.log("getLogNav is working     !!!!!!!!!!!!!!!!!!!!!!!!!!!!          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   var xhttp = new XMLHttpRequest();
@@ -127,7 +128,7 @@ console.log("getLogNav is working     !!!!!!!!!!!!!!!!!!!!!!!!!!!!          !!!!
 }
 
 
-
+/*
 function deleteItem(id, name){
 console.log("Hi I am deleting this item");
 var iditem = id;
