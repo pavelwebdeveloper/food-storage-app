@@ -25,20 +25,7 @@ app
   // The functions
   
   function getFoodStorageItems (req, res) {
-	  var itemsnumber = 0;
-	  
-	  pool.query('SELECT COUNT(id) FROM items', function(err, result) {
-      if (err) {
-        return console.error('error running query', err);
-      }
-	  
-	  // Log this to the console for debugging purposes.
-    console.log("Back from DB with the number of items in the items table");
-	console.log(result.rows);
-	itemsnumber = result.rows[0].count;
-	console.log("items number");
-	console.log(itemsnumber);
-    });
+	  	  
 	  
 	  pool.query('SELECT * FROM items', function(err, result) {
       if (err) {
@@ -52,8 +39,7 @@ app
 		console.log(items);
 	
 		res.render('pages/index', {
-			items: items,
-			itemsnumber: itemsnumber
+			items: items
 		});
 	
 	  });
@@ -74,20 +60,7 @@ app
   
   
   function getManageFoodStoragePage(req, res){
-	  var itemsnumber = 0;
 		
-	pool.query('SELECT COUNT(id) FROM items', function(err, result) {
-      if (err) {
-        return console.error('error running query', err);
-      }
-	  
-	  // Log this to the console for debugging purposes.
-    console.log("Back from DB with the number of items in the items table");
-	console.log(result.rows);
-	itemsnumber = result.rows[0].count;
-	console.log("items number");
-	console.log(itemsnumber);
-    });
 	
 	// This runs the query to get the hotdogs
 	console.log("Getting items from DB");
@@ -110,8 +83,7 @@ app
 	res.render('pages/manage_food_storage_page', {
         items: items,
 		successmessage: successmessage,
-		warnmessage: warnmessage,
-		itemsnumber: itemsnumber
+		warnmessage: warnmessage
 		});
     });
 	
