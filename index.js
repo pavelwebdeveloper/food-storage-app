@@ -193,7 +193,8 @@ function addItem(req, res) {
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
-		successmessage: successmessage
+		successmessage: successmessage,
+		infomessage: infomessage
     });
 
     }); 
@@ -260,7 +261,8 @@ function deleteItem(req, res) {
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
-		successmessage: successmessage
+		successmessage: successmessage,
+		infomessage: infomessage
 		});
     });
   }
