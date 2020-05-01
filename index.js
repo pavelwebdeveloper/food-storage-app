@@ -110,6 +110,19 @@ function getHomePage(req, res){
         return console.error('error running query', err);
       }
 	  
+	  pool.query('SELECT COUNT(id) FROM items', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with the number of items in the items table");
+	console.log(result.rows);
+	itemsnumber = result.rows;
+	console.log("items number");
+	console.log(itemsNumber);
+    });
+	  
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with result:");
 	console.log(result.rows);
@@ -120,7 +133,8 @@ function getHomePage(req, res){
 	
 	res.render('pages/home_page', {
         items: items,
-		infomessage: infomessage
+		infomessage: infomessage,
+		itemsnumber: itemsnumber
 		});
     });
 	
@@ -154,7 +168,7 @@ function addItem(req, res) {
     });	
 	} else {
 		// This runs the query to get the items number
-	/*	
+		
   pool.query('SELECT COUNT(id) FROM items', function(err, result) {
       if (err) {
         return console.error('error running query', err);
@@ -163,11 +177,11 @@ function addItem(req, res) {
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with the number of items in the items table");
 	console.log(result.rows);
-	nextItemNumber = result.rows;
+	itemsnumber = result.rows;
 	console.log("items number");
-	console.log(nextItemNumber);
+	console.log(itemsnumber);
     });
-	*/
+	
 		
 
 		
@@ -182,21 +196,6 @@ function addItem(req, res) {
     console.log("Back from DB with result of adding an item:");
 	console.log(result);
 	console.log(result.rowCount);
-	
-	/*
-	pool.query('ALTER SEQUENCE items_id_seq RESTART WITH 1', function(err, result) {
-      if (err) {
-        return console.error('error running query', err);
-      }
-	  
-	  // Log this to the console for debugging purposes.
-    console.log("Back from DB with the number of items in the items table");
-	console.log(result.rows);
-	var resultOfGachingSequence = result.rows;
-	console.log("result of changing sequence");
-	console.log(resultOfGachingSequence);
-    });
-	*/
 	
 	
 	// This runs the query to get the items
@@ -215,7 +214,8 @@ function addItem(req, res) {
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
-		successmessage: successmessage
+		successmessage: successmessage,
+		itemsnumber: itemsnumber
     });
 
     }); 
@@ -265,18 +265,19 @@ function deleteItem(req, res) {
 	//callback(null, result.rows);
     });
 	
-	
-	pool.query('ALTER SEQUENCE seq RESTART WITH 1;', function(err, result) {
+	pool.query('SELECT COUNT(id) FROM items', function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
+	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with the number of items in the items table");
+	console.log(result.rows);
+	itemsnumber = result.rows;
+	console.log("items number");
+	console.log(itemsnumber);
     });
 	
-	pool.query('UPDATE items SET id = 1;', function(err, result) {
-      if (err) {
-        return console.error('error running query', err);
-      }
-    });
 	
 	// This runs the query to get the hotdogs
   pool.query('SELECT * FROM items', function(err, result) {
@@ -294,7 +295,8 @@ function deleteItem(req, res) {
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
-		successmessage: successmessage
+		successmessage: successmessage,
+		itemsnumber: itemsnumber
 		});
     });
   }
