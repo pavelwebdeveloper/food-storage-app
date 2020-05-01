@@ -187,6 +187,7 @@ function addItem(req, res) {
 	
 		
 	} else {
+		var foundExistingItem = false;
 		// This runs the query to get the items number
 		pool.query('SELECT * FROM items', function(err, result) {
       if (err) {
@@ -209,8 +210,13 @@ function addItem(req, res) {
         items: items,
 		successmessage: successmessage,
 		infomessage: infomessage
-    });
-		} else {
+			});
+			
+			foundExistingItem = true;
+		}
+	});
+
+		if(!foundExistingItem){
 					// This runs the query to add an item
   pool.query('INSERT INTO items (itemname, amount) VALUES ($1, $2)', [req.query.itemname, req.query.itemamount], function(err, result) {
       if (err) {
@@ -274,8 +280,8 @@ function addItem(req, res) {
     });		
 	}
 	*/
-		}
-	});
+		}	
+	
     }); 
 		
 
