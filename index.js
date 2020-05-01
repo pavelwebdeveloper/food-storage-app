@@ -59,6 +59,7 @@ app
   
   
   function getManageFoodStoragePage(req, res){
+	  var itemsnumber = 0;
 	console.log("Getting items from DB");
 	
 	// This runs the query to get the hotdogs
@@ -67,6 +68,19 @@ app
       if (err) {
         return console.error('error running query', err);
       }
+	  
+	  pool.query('SELECT COUNT(id) FROM items', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with the number of items in the items table");
+	console.log(result.rows);
+	itemsnumber = result.rows;
+	console.log("items number");
+	console.log(itemsnumber);
+    });
 	  
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with result:");
@@ -80,7 +94,8 @@ app
 	res.render('pages/manage_food_storage_page', {
         items: items,
 		successmessage: successmessage,
-		warnmessage: warnmessage
+		warnmessage: warnmessage,
+		itemsnumber: itemsnumber
 		});
     });
 	
@@ -101,6 +116,7 @@ app
 
 
 function getHomePage(req, res){
+	var itemsnumber = 0;
 	console.log("Getting items from DB");
 	
 	// This runs the query to get the hotdogs
@@ -120,7 +136,7 @@ function getHomePage(req, res){
 	console.log(result.rows);
 	itemsnumber = result.rows;
 	console.log("items number");
-	console.log(itemsNumber);
+	console.log(itemsnumber);
     });
 	  
 	  // Log this to the console for debugging purposes.
@@ -157,6 +173,7 @@ function getHomePage(req, res){
 
 function addItem(req, res) {
 		var infomessage = "";
+		var itemsnumber = 0;
 		//var nextItemNumber = 0;
 	console.log("Add Item Info:");
 	console.log(req.query.itemname);
@@ -249,6 +266,7 @@ function addItem(req, res) {
 
 
 function deleteItem(req, res) {
+	var itemsnumber = 0;
 	  console.log("Id of Item that is going to be deleted:");
 	  //var itemname = req.query.itemname;
 	  var successmessage = "";
