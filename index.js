@@ -400,7 +400,7 @@ function deleteItem(req, res) {
 	console.log("oldamount variable:))))))))))))))))))))");
 	console.log(isNaN(oldamount));
 	
-	newamount = parseFloat(oldamount + updateamount);
+	newamount = parseFloat(oldamount) + parseFloat(updateamount);
 	console.log("newamount variable:))))))))))))))))))))");
 	console.log(isNaN(newamount));
 	
