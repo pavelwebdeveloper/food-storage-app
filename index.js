@@ -186,6 +186,27 @@ function addItem(req, res) {
     }); 
 	
 		
+	} else if(req.query.itemamount<0) {
+		// This runs the query to get the items
+  pool.query('SELECT * FROM items', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }	  
+	  	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with result !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:");
+	console.log(result.rows);
+	const items = result.rows;
+	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+	console.log(items);
+	
+	infomessage = "The amount value should not be negative";
+		res.render('pages/manage_food_storage_page', {
+        infomessage: infomessage,
+		successmessage: successmessage,
+		items: items
+    });
+    }); 
 	} else {
 		var foundExistingItem = false;
 		// This runs the query to get the items number
