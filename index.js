@@ -390,7 +390,7 @@ function deleteItem(req, res) {
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with the amount:");
 	console.log(result.rows);
-	oldamount = result.rows;
+	oldamount = result.rows.[0].amount;
 	console.log("oldamount variable:");
 	console.log(oldamount);
     });
