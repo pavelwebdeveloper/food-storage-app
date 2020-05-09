@@ -379,9 +379,9 @@ function deleteItem(req, res) {
 	  var infomessage = "";
 	  var newamount = 0;
 	  var oldamount = 0;
-	  var itemamount = req.query.updateamount;
+	  var updateamount = req.query.updateamount;
 	  console.log("itemamount variable:))))))))))))))))))))");
-	console.log(uamount);
+	console.log(updateamount);
 	  console.log("Update Item: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	  
 	  // This runs the query to get the hotdogs
@@ -397,7 +397,7 @@ function deleteItem(req, res) {
 	console.log("oldamount variable:");
 	console.log(oldamount);
 	
-	newamount = oldamount + itemamount;
+	newamount = oldamount + updateamount;
 	
 	console.log("New amount before if:");
 	console.log(newamount);
