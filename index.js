@@ -379,7 +379,8 @@ function deleteItem(req, res) {
 	  var infomessage = "";
 	  var newamount = 0;
 	  var oldamount = 0;
-	  console.log("Update Hot Dog: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+	  var itemamount = req.query.itemamount;
+	  console.log("Update Item: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	  
 	  // This runs the query to get the hotdogs
   pool.query('SELECT amount FROM items WHERE id = $1', [req.query.id], function(err, result) {
@@ -395,7 +396,7 @@ function deleteItem(req, res) {
 	console.log(oldamount);
     });
 	
-	newamount = oldamount + req.query.itemamount;
+	newamount = oldamount + itemamount;
 	
 	console.log("New amount before if:");
 	console.log(newamount);
