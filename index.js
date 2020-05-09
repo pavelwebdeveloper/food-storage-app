@@ -17,6 +17,7 @@ app
   .get('/gethomepage', getHomePage)
   .post('/additem', addItem)
   .delete('/deleteitem', deleteItem)
+  .put('/updateitem', updateItem)
   
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
   
@@ -371,6 +372,65 @@ function deleteItem(req, res) {
 		infomessage: infomessage
 		});
     });
+  }
+  
+  
+    function updateItem(req, res) {
+	  var infomessage = "";
+	  var newamount = 0;
+	  var oldamount = 0;
+	  console.log("Update Hot Dog: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+	  
+	  // This runs the query to get the hotdogs
+  pool.query('SELECT amount FROM items WHERE id = $1', [req.query.id], function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with the amount:");
+	console.log(result.rows);
+	oldamount = result.rows;
+	console.log("oldamount variable:");
+	console.log(oldamount);
+    });
+
+ /*
+	pool.query('UPDATE hotdogs SET hotdogname = $2, description = $3, price = $4 WHERE id = $1', [Number(obj.id), obj.hotdogname, obj.hotdogdescription, obj.hotdogprice], function(err, result) {
+	console.log("Result from DB with ");
+	console.log(result);
+
+	
+	  
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  
+	  pool.query('SELECT hotdogs.id, hotdogname, description, price, images.image FROM hotdogs JOIN images ON hotdogs.image = images.id', function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+	  
+	  // Log this to the console for debugging purposes.
+    console.log("Back from DB with result:");
+	console.log(result.rows);
+	const hotdogs = result.rows;
+	console.log("hotdogs variable:");
+	console.log(hotdogs);
+	infomessage = "The information about " + obj.hotdogname + " has been successfully updated !";
+	
+	res.render('pages/manage_hot_dogs_page', {
+        hotdogs: hotdogs,
+		infomessage: infomessage
+    });
+	
+	//callback(null, result.rows);
+    });
+	  
+});
+*/
+
+
   }
   
   
