@@ -380,7 +380,7 @@ function deleteItem(req, res) {
 	  var newamount = 0;
 	  var oldamount = 0;
 	  var updateamount = req.query.updateamount;
-	  console.log("itemamount variable:))))))))))))))))))))");
+	  console.log("updateamount variable:))))))))))))))))))))");
 	console.log(updateamount);
 	console.log(isNaN(updateamount));
 	  console.log("Update Item: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
@@ -397,8 +397,12 @@ function deleteItem(req, res) {
 	oldamount = Number(result.rows[0].amount);
 	console.log("oldamount variable:");
 	console.log(oldamount);
+	console.log("oldamount variable:))))))))))))))))))))");
+	console.log(isNaN(oldamount));
 	
 	newamount = oldamount + updateamount;
+	console.log("newamount variable:))))))))))))))))))))");
+	console.log(isNaN(newamount));
 	
 	console.log("New amount before if:");
 	console.log(newamount);
