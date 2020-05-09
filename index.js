@@ -80,6 +80,8 @@ app
 	
 	var successmessage;
 	var infomessage = "";
+	const itemname = "";
+	const itemamount = 0;
 	
 	if(!req.query.itemname){
 	successmessage = "";
@@ -91,7 +93,9 @@ app
 	res.render('pages/manage_food_storage_page', {
         items: items,
 		successmessage: successmessage,
-		infomessage: infomessage
+		infomessage: infomessage,
+		itemname: itemname,
+		itemamount: itemamount
 		});
     }); 
 	
@@ -174,6 +178,8 @@ function addItem(req, res) {
     console.log("Back from DB with result !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:");
 	console.log(result.rows);
 	const items = result.rows;
+	const itemname = req.query.itemname;
+	const itemamount = req.query.itemamount;
 	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	console.log(items);
 	
@@ -181,7 +187,9 @@ function addItem(req, res) {
 		res.render('pages/manage_food_storage_page', {
         infomessage: infomessage,
 		successmessage: successmessage,
-		items: items
+		items: items,
+		itemname: itemname,
+		itemamount: itemamount
     });
     }); 
 	
@@ -197,6 +205,8 @@ function addItem(req, res) {
     console.log("Back from DB with result !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:");
 	console.log(result.rows);
 	const items = result.rows;
+	const itemname = req.query.itemname;
+	const itemamount = req.query.itemamount;
 	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	console.log(items);
 	
@@ -204,7 +214,9 @@ function addItem(req, res) {
 		res.render('pages/manage_food_storage_page', {
         infomessage: infomessage,
 		successmessage: successmessage,
-		items: items
+		items: items,
+		itemname: itemname,
+		itemamount: itemamount
     });
     }); 
 	} else {
@@ -226,11 +238,15 @@ function addItem(req, res) {
 		if(item.itemname == req.query.itemname){
 			infomessage = req.query.itemname + " is already included in the list";
 			successmessage = "";
+			const itemname = req.query.itemname;
+			const itemamount = req.query.itemamount;
 			
 			res.render('pages/manage_food_storage_page', {
         items: items,
 		successmessage: successmessage,
-		infomessage: infomessage
+		infomessage: infomessage,
+		itemname: itemname,
+		itemamount: itemamount
 			});
 			
 			foundExistingItem = true;
@@ -265,13 +281,16 @@ function addItem(req, res) {
 	console.log("items variable: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 	console.log(items);
 	successmessage = "Success! You have successfully added " + req.query.itemname + " !";
-	
+	const itemname = "";
+	const itemamount = 0;
 	
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
 		successmessage: successmessage,
-		infomessage: infomessage
+		infomessage: infomessage,
+		itemname: itemname,
+		itemamount: itemamount
     });
 
     }); 
