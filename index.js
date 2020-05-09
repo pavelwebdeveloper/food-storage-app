@@ -394,6 +394,18 @@ function deleteItem(req, res) {
 	console.log("oldamount variable:");
 	console.log(oldamount);
     });
+	
+	newamount = oldamount + req.query.itemamount;
+	
+	console.log("New amount before if:");
+	console.log(newamount);
+	
+	if(newamount<0){
+		newamount = 0;
+	}
+
+	console.log("New amount after if:");
+	console.log(newamount);
 
  /*
 	pool.query('UPDATE hotdogs SET hotdogname = $2, description = $3, price = $4 WHERE id = $1', [Number(obj.id), obj.hotdogname, obj.hotdogdescription, obj.hotdogprice], function(err, result) {
