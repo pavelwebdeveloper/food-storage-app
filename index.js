@@ -382,6 +382,7 @@ function deleteItem(req, res) {
 	  var updateamount = req.query.updateamount;
 	  console.log("itemamount variable:))))))))))))))))))))");
 	console.log(updateamount);
+	isNaN(updateamount);
 	  console.log("Update Item: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	  
 	  // This runs the query to get the hotdogs
