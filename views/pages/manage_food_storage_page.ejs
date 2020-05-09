@@ -6,9 +6,9 @@
 		
      
 		 <label>Item Name</label>
-		 <input type="text" name="itemName" id="itemName" pattern="[A-za-z\s]{3,}" required>
+		 <input type="text" name="itemName" id="itemName" value="<%= itemname %>" pattern="[A-za-z\s]{3,}" required>
 		 <label>Item Amount</label>
-		 <input type="number" name="itemAmount" id="itemAmount" size="7" required>
+		 <input type="number" name="itemAmount" id="itemAmount" value="<%= itemamount %>" size="7" required>
 		 <button class="submitBtn" onclick="addItem()">Add a food storage item</button>
 		 
 		 <div class="success-message"><%= successmessage %></div>
