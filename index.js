@@ -380,6 +380,8 @@ function deleteItem(req, res) {
 	  var newamount = 0;
 	  var oldamount = 0;
 	  var itemamount = req.query.itemamount;
+	  console.log("itemamount variable:))))))))))))))))))))");
+	console.log(itemamount);
 	  console.log("Update Item: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	  
 	  // This runs the query to get the hotdogs
