@@ -407,6 +407,9 @@ function deleteItem(req, res) {
 	console.log("New amount before if:");
 	console.log(newamount);
 	
+	console.log("New req.query.updateamount before if:");
+	console.log(req.query.updateamount);
+	
 	if(newamount<0){
 		newamount = 0;
 	}
@@ -414,6 +417,7 @@ function deleteItem(req, res) {
 	console.log("New amount after if:");
 	console.log(newamount);
 	
+	console.log("New req.query.updateamount after if:");
 	req.query.updateamount = newamount;
 	console.log(req.query.updateamount);
 	
