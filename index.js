@@ -404,9 +404,6 @@ function deleteItem(req, res) {
 	console.log("newamount variable:))))))))))))))))))))");
 	console.log(isNaN(newamount));
 	
-	
-    });
-	
 	console.log("New amount before if:");
 	console.log(newamount);
 	
@@ -416,6 +413,10 @@ function deleteItem(req, res) {
 
 	console.log("New amount after if:");
 	console.log(newamount);
+	
+    });
+	
+	
 
  
 	pool.query('UPDATE items SET amount = $2 WHERE id = $1', [newamount, req.query.id], function(err, result) {
