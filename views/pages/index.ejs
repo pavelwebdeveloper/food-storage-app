@@ -127,10 +127,10 @@ console.log("getLogNav is working     !!!!!!!!!!!!!!!!!!!!!!!!!!!!          !!!!
   xhttp.send();
 }
 
-function updateItem(id){
+function updateItem(id, name){
 var xhttp = new XMLHttpRequest();
   var updateamount = document.getElementById(id).value;
-  var itemname = document.getElementById("itemName").value;
+  var itemname = name;
   console.log("values for update: )))))))))))))))))))))))");
   console.log("updateamount:");
   console.log(updateamount);
