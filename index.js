@@ -415,6 +415,7 @@ function deleteItem(req, res) {
 	console.log(newamount);
 	
 	req.query.updateamount = newamount;
+	console.log(req.query.updateamount);
 	
 		pool.query('UPDATE items SET amount = $2 WHERE id = $1', [req.query.updateamount, req.query.id], function(err, result) {
 	console.log("Result from DB with ");
