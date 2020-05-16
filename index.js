@@ -383,6 +383,8 @@ function deleteItem(req, res) {
 	  var updateamount = req.query.updateamount;
 	  console.log("updateamount variable:))))))))))))))))))))");
 	console.log(updateamount);
+	console.log("item name !!!!!!!!!!!!!!!!!!");
+	console.log(name);
 	console.log(isNaN(updateamount));
 	  console.log("Update Item: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	  
