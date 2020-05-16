@@ -404,6 +404,9 @@ function deleteItem(req, res) {
 	console.log("newamount variable:))))))))))))))))))))");
 	console.log(isNaN(newamount));
 	
+	
+    });
+	
 	console.log("New amount before if:");
 	console.log(newamount);
 	
@@ -413,12 +416,9 @@ function deleteItem(req, res) {
 
 	console.log("New amount after if:");
 	console.log(newamount);
-    });
-	
-	
 
- /*
-	pool.query('UPDATE hotdogs SET hotdogname = $2, description = $3, price = $4 WHERE id = $1', [Number(obj.id), obj.hotdogname, obj.hotdogdescription, obj.hotdogprice], function(err, result) {
+ 
+	pool.query('UPDATE items SET amount = $2 WHERE id = $1', [newamount, req.query.id], function(err, result) {
 	console.log("Result from DB with ");
 	console.log(result);
 
@@ -428,7 +428,7 @@ function deleteItem(req, res) {
         return console.error('error running query', err);
       }
 	  
-	  pool.query('SELECT hotdogs.id, hotdogname, description, price, images.image FROM hotdogs JOIN images ON hotdogs.image = images.id', function(err, result) {
+	  pool.query('SELECT * FROM items', function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
@@ -436,13 +436,14 @@ function deleteItem(req, res) {
 	  // Log this to the console for debugging purposes.
     console.log("Back from DB with result:");
 	console.log(result.rows);
-	const hotdogs = result.rows;
-	console.log("hotdogs variable:");
-	console.log(hotdogs);
-	infomessage = "The information about " + obj.hotdogname + " has been successfully updated !";
+	const items = result.rows;
+	console.log("items variable:");
+	console.log(items);
+	successmessage = "Success! You have successfully updated the amount of " + req.query.itemname;
 	
 	res.render('pages/manage_hot_dogs_page', {
-        hotdogs: hotdogs,
+        items: items,
+		successmessage: successmessage,
 		infomessage: infomessage
     });
 	
@@ -450,7 +451,7 @@ function deleteItem(req, res) {
     });
 	  
 });
-*/
+
 
 
   }
