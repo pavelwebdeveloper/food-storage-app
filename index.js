@@ -447,7 +447,7 @@ function deleteItem(req, res) {
 	const items = result.rows;
 	console.log("items variable:");
 	console.log(items);
-	successmessage = "Success! You have successfully updated the amount of " + req.query.itemname;
+	successmessage = "Success! You have successfully updated the amount of " + items.itemname;
 	const itemname = "";
 	const itemamount = 0;
 	
