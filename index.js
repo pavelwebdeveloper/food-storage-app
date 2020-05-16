@@ -440,11 +440,15 @@ function deleteItem(req, res) {
 	console.log("items variable:");
 	console.log(items);
 	successmessage = "Success! You have successfully updated the amount of " + req.query.itemname;
+	const itemname = "";
+	const itemamount = 0;
 	
 	res.render('pages/manage_food_storage_page', {
         items: items,
 		successmessage: successmessage,
-		infomessage: infomessage
+		infomessage: infomessage,
+		itemname: itemname,
+		itemamount: itemamount
     });
 	
 	//callback(null, result.rows);
